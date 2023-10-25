@@ -1,0 +1,29 @@
+analytics:
+  target: bigquery-prod
+
+  outputs:
+    bigquery-prod:
+      type: bigquery
+      method: oauth
+      project: dbt-projects-403104
+      dataset: jaffle_shop
+      threads: 4
+      keyfile: "{{ env_var('GOOGLE_APPLICATION_CREDENTIALS') }}"
+      location: US
+      priority: interactive
+      job_execution_timeout_seconds: 600
+      job_retries: 5
+
+elementary:
+  outputs:
+    bigquery-prod:
+      type: bigquery
+      method: oauth
+      project: dbt-projects-403104
+      dataset: jaffle_shop
+      threads: 4
+      keyfile: "{{ env_var('GOOGLE_APPLICATION_CREDENTIALS') }}"
+      location: US
+      priority: interactive
+      job_execution_timeout_seconds: 600
+      job_retries: 5

@@ -1,0 +1,31 @@
+name: 'jaffle_shop'
+
+config-version: 2
+version: '1.0.0'
+
+require-dbt-version: ">=1.6.6"
+
+profile: 'analytics'
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+analysis-paths: ["analyses"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"
+clean-targets:
+    - "target"
+    - "dbt_modules"
+    - "dbt_packages"
+
+models:
+  jaffle_shop:
+    +alias: analytics
+    archive:
+      enabled: false
+    base:
+      materialized: ephemeral
+    final:
+      materialized: table
